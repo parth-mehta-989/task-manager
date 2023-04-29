@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import './main-styles.scss';
+
+html {
+    background: linear-gradient(to right top, $turquoise, $green);
+}
+
+html,
+body {
+    height: 100%;
+    font-family: $font-family;
+}
