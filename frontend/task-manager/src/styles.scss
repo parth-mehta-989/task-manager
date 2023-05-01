@@ -33,6 +33,26 @@ a{
         background: darkseagreen;
     }
 }
+
+.edit-box-modal{
+    min-height: 180px;
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border-radius: 8px;
+    padding: 35px;
+    position: relative;
+    .input-container{
+        display: flex;
+    }
+    .buttons-container{
+        position: absolute;
+        bottom: 35px;
+        right: 35px;
+    }
+}
+
+
 .is-secondary{
     background: none;
     transition: 0.2s;

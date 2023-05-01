@@ -7,18 +7,22 @@ import { CoreViewComponent } from './pages/core-view/core-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewListComponent } from './pages/new-list/new-list.component';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoreViewComponent,
     NewListComponent,
-    NewTaskComponent
+    NewTaskComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

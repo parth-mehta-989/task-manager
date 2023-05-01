@@ -5,10 +5,13 @@
                 Lists
             </h1>
             <div class="list-menu">
-                <a class="list-item" routerLinkActive="is-active" [routerLink]="['/lists', list._id]"
-                    *ngFor="let list of lists">
-                    <p>{{list?.title}}</p>
+                <a class="list-item" routerLinkActive="is-active" *ngFor="let list of lists">
+                    <div class="list-title" [routerLink]="['/lists', list._id]">
+                        <p>{{list?.title}}</p>
+                    </div>
                     <div class="list-action-icons">
+                        <img class="action-icon edit-icon" src="../../../assets/edit-icon.gif"
+                            [routerLink]="['/lists', list._id,'edit-list']">
                         <img class="action-icon delete-icon" src="../../../assets/delete-icon.svg"
                             (click)="deleteList(list)">
                     </div>
@@ -27,6 +30,8 @@
                 <div class="task-list">
                     <div class="task" [ngClass]="{'complete':task?.completed}" *ngFor="let task of tasks">{{task.title}}
                         <div class="task-action-icons">
+                            <img class="action-icon edit-icon" src="../../../assets/edit-icon.gif"
+                                [routerLink]="['./','tasks',task._id,'edit-task' ]">
                             <img class="action-icon  complete-icon" src="../../../assets/checkbox-icon.gif"
                                 (click)="toggleCompletionOfTask(task)">
                             <img class="action-icon delete-icon" src="../../../assets/delete-icon.svg"
@@ -44,11 +49,10 @@
                     <span *ngIf="!isAnyListSelected">Can't find any tasks... <br>Are you sure you selected a list or
                         created at least one
                         list?
-                        <!-- &nbsp;<img class="shrug-emoji" src="../../../assets/shrug.svg"> -->
                     </span>
                     <span *ngIf="isAnyListSelected && !tasks?.length ">Can't find any tasks?<br>You haven't created any,
                         that's why!
-                        <!-- &nbsp;&nbsp;<img class="shrug-emoji" src="../../../assets/shrug.svg"> -->
+
                     </span>
                 </div>
             </div>

@@ -1,0 +1,18 @@
+<div class="global">
+    <div class="edit-box-modal">
+        <h1 class="title primary-text">Edit {{editedElementType}}</h1>
+        <div class="input-container">
+            <input #title type="text" class="input" placeholder="Enter list title..." [(ngModel)]="previousValue">
+        </div>
+        <div class="buttons-container">
+            <button class="is-secondary button cursor-pointer medium-font" routerLink="../">Cancel</button>
+            <button class="is-primary button cursor-pointer medium-font" (click)="editValue(title.value)">Save</button>
+            <!-- <button class="is-primary button cursor-pointer medium-font" *ngIf="editedElementType === 'list' "
+                (click)="editList(listTitle.value)">Create
+                list</button> -->
+            <!-- <button class="is-primary button cursor-pointer medium-font" *ngIf="editedElementType === 'task'"
+                (click)="editTask(taskTitle.value)">Create
+                list</button> -->
+        </div>
+    </div>
+</div>
