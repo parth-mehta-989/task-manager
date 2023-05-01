@@ -39,10 +39,10 @@ exports.deleteListHandler = (req, res) => {
     let id = req.params.id;
     List.findOneAndDelete({ _id: id }).then((result) => {
         if (result) {
+            deleteTasksFromList(id);
             res.status(200).send(result);
         }
-        deleteTasksFromList(id);
-        res.status.apply(200).send('done');
+        
     }).catch((err) => {
         if (err) {
             res.status(500).send(err);

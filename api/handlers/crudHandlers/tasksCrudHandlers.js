@@ -40,7 +40,7 @@ exports.createNewTaskHandler = (req, res) => {
 };
 
 exports.updateTaskHandler = (req, res) => {
-
+    let listId = req.params.listId
     List.findOne({
         _id: req.params.listId,
     }).then((list) => {

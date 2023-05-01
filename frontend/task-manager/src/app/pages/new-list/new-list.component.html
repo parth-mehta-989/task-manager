@@ -1,0 +1,13 @@
+<div class="global">
+    <div class="edit-box-modal">
+        <h1 class="title primary-text">Create a new list</h1>
+        <div class="input-container">
+            <input #listTitle type="text" class="input" placeholder="Enter list title...">
+        </div>
+        <div class="buttons-container">
+            <button class="is-secondary button cursor-pointer medium-font" routerLink="../">Cancel</button>
+            <button class="is-primary button cursor-pointer medium-font" (click)="createList(listTitle.value)">Create
+                list</button>
+        </div>
+    </div>
+</div>

@@ -13,7 +13,8 @@ app.use(bodyParser.json());
 
 // CORS HEADERS MIDDLEWARE
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
@@ -60,10 +61,14 @@ app.post('/lists/:id/tasks', tasksCrudHandlers.createNewTaskHandler);
  * PATCH /list/:listId/tasks/:taskId
  * Purpose: Updates a specific task 
  */
-app.get('list/:listid/tasks/:taskId', tasksCrudHandlers.updateTaskHandler);
+app.patch('/lists/:listId/tasks/:taskId', tasksCrudHandlers.updateTaskHandler);
 
 /**
  * DELETE /lists/:listId/tasks/:taskId
  * Purpose: Delete a task
  */
 app.delete('/lists/:listId/tasks/:taskId', tasksCrudHandlers.deleteTaskHandler);
+
+app.listen(9090, () => {
+  console.log("listening on port 9090")
+})

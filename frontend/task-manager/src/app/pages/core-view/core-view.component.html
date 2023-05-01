@@ -1,0 +1,57 @@
+<div class="global">
+    <div class="centered-element">
+        <div class="side-bar">
+            <h1 class="title primary-text">
+                Lists
+            </h1>
+            <div class="list-menu">
+                <a class="list-item" routerLinkActive="is-active" [routerLink]="['/lists', list._id]"
+                    *ngFor="let list of lists">
+                    <p>{{list?.title}}</p>
+                    <div class="list-action-icons">
+                        <img class="action-icon delete-icon" src="../../../assets/delete-icon.svg"
+                            (click)="deleteList(list)">
+                    </div>
+                </a>
+
+            </div>
+            <button class="is-primary new-list-button" title="create new list" routerLink="/new-list">
+                + New List
+            </button>
+        </div>
+        <div class="tasks-container">
+            <div class="tasks-list" *ngIf="isAnyListSelected">
+                <h1 class="title primary-text">
+                    Tasks
+                </h1>
+                <div class="task-list">
+                    <div class="task" [ngClass]="{'complete':task?.completed}" *ngFor="let task of tasks">{{task.title}}
+                        <div class="task-action-icons">
+                            <img class="action-icon  complete-icon" src="../../../assets/checkbox-icon.gif"
+                                (click)="toggleCompletionOfTask(task)">
+                            <img class="action-icon delete-icon" src="../../../assets/delete-icon.svg"
+                                (click)="deleteTask(task)">
+                        </div>
+                    </div>
+
+                </div>
+                <button class="is-primary new-task-button" title="create new task" *ngIf="isAnyListSelected"
+                    routerLink="./new-task">&nbsp;+&nbsp;</button>
+            </div>
+            <div class="image-container" *ngIf="!isAnyListSelected || !tasks?.length">
+                <div class="illustration-container "></div>
+                <div class="text ">
+                    <span *ngIf="!isAnyListSelected">Can't find any tasks... <br>Are you sure you selected a list or
+                        created at least one
+                        list?
+                        <!-- &nbsp;<img class="shrug-emoji" src="../../../assets/shrug.svg"> -->
+                    </span>
+                    <span *ngIf="isAnyListSelected && !tasks?.length ">Can't find any tasks?<br>You haven't created any,
+                        that's why!
+                        <!-- &nbsp;&nbsp;<img class="shrug-emoji" src="../../../assets/shrug.svg"> -->
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

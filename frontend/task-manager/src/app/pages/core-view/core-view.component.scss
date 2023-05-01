@@ -1,11 +1,6 @@
-@import '../../main-styles.scss';
+@import '../../../main-styles.scss';
 
-.global {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 
     .centered-element {
         display: flex;
@@ -32,14 +27,31 @@
                 .list-item {
                     display: flex;
                     align-items: center;
+                    justify-content: space-between;
                     padding: 2px 15px 2px 8px;
                     border-radius: 10px;
                     color: #5f5f5f;
                     margin-bottom: 7px;
+                    .list-action-icons{
+                        visibility: hidden;
+                        display: flex;
+                        align-items: center;
+                        transition: 0.1s;
+                        .action-icon{
+                            height: 1rem;
+                            &:hover{
+                                height: 1.2rem;
+                            }
+                        }
+                        
+                    }
 
                     &:hover {
                         background: $light;
                         transition: 200ms;
+                        .list-action-icons{
+                            visibility: visible;
+                        }
                     }
 
                     &.is-active {
@@ -80,8 +92,16 @@
 
             .task-list {
                 margin-top: 15px;
+                overflow-y: hidden;
+                max-height: 70vh; 
+                z-index: 2;
+                &:hover{
+                    overflow: auto;
+                }
+                
 
                 .task {
+                    z-index: 0;
                     background: white;
                     padding: 15px 20px;
                     margin-bottom: 10px;
@@ -89,12 +109,41 @@
                     transition: box-shadow .20s ease transform .5s ease;
                     transition: .20s ease;
                     user-select: none;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .task-action-icons{
+                        visibility: hidden;
+                        display: flex;
+                        align-items: center;
+                        gap:1rem;
+
+                        .action-icon{
+                            cursor: pointer;
+                            height: 1rem;
+                            transition: 0.1s;
+                            opacity: 1;
+                            &:hover{
+                                background: white;
+                                opacity: 1;
+                                height: 1.2rem;
+                            }
+                        }
+                    }
 
                     &:hover:not(.complete) {
                         background: ghostwhite;
                         box-shadow: 0.5px 0.5px 5px 3px #eeeeee;
+                        .action-icon{
+                            opacity: 1;
+                        }
                     }
-
+                    &:hover{
+                        .task-action-icons{
+                            visibility:visible;
+                            display: flex;
+                        }
+                    }
                     &:active {
                         transform: scale(.98);
                     }
@@ -113,13 +162,16 @@
                 bottom: 25px;
                 right: 25px;
                 font-size: 30px;
-                padding: 5px 15px;
+                width: 60px;
                 height: 60px;
                 border-radius: 100px;
                 transition: 400ms;
+                box-shadow: 4px 4px 19px 0px $green;
 
                 &:hover {
                     background: darkseagreen;
+                box-shadow: 4px 4px 19px 0px darkseagreen;
+
                 }
 
                 &:active {
@@ -129,26 +181,34 @@
             }
         }
     }
-}
 
 
 
 
+.image-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .illustration-container{
+        background: url('../../../assets/shrug.svg');    
+        height: 60vh;
+        aspect-ratio: 1;
+        background-repeat: no-repeat;  
+        border-radius: 1rem;
+        box-shadow: 0 0  6px 0.5px gainsboro;
+    }
+    .text{
+        color: grey;
+        line-height: 2rem;
+        font-size: 1.25rem;
+        font-family: $font-family;
+        text-align: center;
+        margin-top:1.5rem;
+        // .shrug-emoji{
+        //     width: 1rem;
+        //     height: 1rem;
+        // }
+    }
 
-.title {
-    margin-top: 0px;
-    text-transform: uppercase;
-    font-size: 24px;
-    letter-spacing: 2px;
-}
-
-
-
-.primary-text {
-    color: green;
-}
-
-.is-primary {
-    background: $green;
-    color: white;
 }

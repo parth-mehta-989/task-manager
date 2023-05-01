@@ -11,16 +11,16 @@ export class WebRequestService {
   constructor(private http: HttpClient) {
     this.ROOT_URL = `http://localhost:9090`;
   }
-  get(uri: string): Observable<Object> {
-    return this.http.get(`${this.ROOT_URL}/${uri}`);
+  get<T>(uri: string): Observable<T>{
+    return this.http.get<T>(`${this.ROOT_URL}/${uri}`);
   }
-  post(uri: string, body: Object): Observable<Object> {
-    return this.http.post(`${this.ROOT_URL}/${uri}`, body);
+  post<T>(uri: string, body: Object):Observable<T> {
+    return this.http.post<T>(`${this.ROOT_URL}/${uri}`, body);
   }
-  delete(uri: string): Observable<Object> {
-    return this.http.delete(`${this.ROOT_URL}/${uri}`);
+  delete<T>(uri: string):Observable<T> {
+    return this.http.delete<T>(`${this.ROOT_URL}/${uri}`);
   }
-  patch(uri: string, body: Object): Observable<Object> {
-    return this.http.patch(`${this.ROOT_URL}/${uri}`, body);
+  patch<T>(uri: string, body: Object) :Observable<T>{
+    return this.http.patch<T>(`${this.ROOT_URL}/${uri}`, body);
   }
 }

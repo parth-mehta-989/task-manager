@@ -1,0 +1,13 @@
+<div class="global">
+    <div class="edit-box-modal">
+        <h1 class="title primary-text">Create a new Task</h1>
+        <div class="input-container">
+            <input #TaskTitle type="text" class="input" placeholder="Enter Task title...">
+        </div>
+        <div class="buttons-container">
+            <button class="is-secondary button cursor-pointer medium-font" routerLink="../">Cancel</button>
+            <button class="is-primary button cursor-pointer medium-font" (click)="createTask(TaskTitle.value)">Create
+                list</button>
+        </div>
+    </div>
+</div>
