@@ -5,6 +5,19 @@ exports.getAllTasksHandler = (req, res) => {
     let ListId = req.params.id;
     Task.find({
         _listId: ListId
+    }).then((records) => {
+        res.status(200).send(records);
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
+};
+exports.getTaskHandler = (req, res) => {
+    // return selected tasks of a list
+    let ListId = req.params.listId;
+    let taskId = req.params.taskId;
+     Task.findOne({
+        _listId: ListId,
+        _id:taskId
     }).then((record) => {
         res.status(200).send(record);
     }).catch((err) => {

@@ -9,6 +9,18 @@ exports.getAllListsHandler = (req, res) => {
     });
 };
 
+exports.getListHandler = (req, res) => {
+    // return selected list
+    let listId = req.params.id
+    List.findOne({
+        _id:listId,
+    }).then((lists) => {
+        res.send(lists);
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
+};
+
 exports.createListHandler = (req, res) => {
     // create a new list and return the new list document with the id
     let title = req.body.title;
@@ -28,7 +40,7 @@ exports.updateListHandler = (req, res) => {
     List.findOneAndUpdate({ _id: id }, {
         $set: req.body
     }).then((result) => {
-        res.sendStatus(200);
+        res.status(200).send(result);
     }).catch((err) => {
         res.status(500).send(err);
     });

@@ -27,6 +27,12 @@ app.use(function(req, res, next) {
 */
 app.get('/lists', listsCrudHandlers.getAllListsHandler);
 
+/** 
+ * GET /lists/:id
+ * Purpose: gets selected list by id
+*/
+app.get('/lists/:id', listsCrudHandlers.getListHandler);
+
 /**
  * POST /lists
  * Purpose: creates a list and returns the created list
@@ -41,7 +47,7 @@ app.patch('/lists/:id', listsCrudHandlers.updateListHandler);
 
 /**
  * DELETE /lists/:id
- * Purpose: updates the specifiedl ist
+ * Purpose: updates the specified list
  */
 app.delete('/lists/:id', listsCrudHandlers.deleteListHandler);
 
@@ -51,6 +57,12 @@ app.delete('/lists/:id', listsCrudHandlers.deleteListHandler);
 */
 app.get('/lists/:id/tasks', tasksCrudHandlers.getAllTasksHandler);
 
+/** 
+ * GET /lists/:listId/tasks/:taskId
+ * Purpose: gets all lists
+*/
+app.get('/lists/:listId/tasks/:taskId', tasksCrudHandlers.getTaskHandler);
+
 /**
  * POST /list/:id/tasks
  * Purpose: creates a task
@@ -58,7 +70,7 @@ app.get('/lists/:id/tasks', tasksCrudHandlers.getAllTasksHandler);
 app.post('/lists/:id/tasks', tasksCrudHandlers.createNewTaskHandler);
 
 /**
- * PATCH /list/:listId/tasks/:taskId
+ * PATCH /lists/:listId/tasks/:taskId
  * Purpose: Updates a specific task 
  */
 app.patch('/lists/:listId/tasks/:taskId', tasksCrudHandlers.updateTaskHandler);
